@@ -1,10 +1,11 @@
-let max = 0
-let turnBy = 0
-let min = 0
 let mid = 0
+let max = 0
+let min = 0
+let turnBy = 0
 let capturing = 0
 min = 0
 max = 90
+mid = 45
 motors.resetAll()
 forever(function () {
     capturing = 1
@@ -26,10 +27,10 @@ forever(function () {
         sensors.color4.pauseUntilColorDetected(ColorSensorColor.White)
         max = motors.mediumB.angle()
         brick.setStatusLight(StatusLight.RedFlash)
+        mid = (min + max) / 2
     }
 })
 forever(function () {
-    mid = (min + max) / 2
     turnBy = mid - 45
     motors.largeAD.steer(turnBy, 50)
 })
